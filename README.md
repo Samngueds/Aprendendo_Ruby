@@ -95,7 +95,6 @@ Este repositório contém exemplos práticos e conceitos fundamentais para quem 
 - 📂 **Manipulação de Arquivos**
   - Leitura e escrita de arquivos
   - Manipulação de caminhos
-  - Arquivos binários e texto
 </details>
 
 ## 🛠️ Como usar este repositório
