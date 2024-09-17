@@ -194,3 +194,5 @@ puts "Data formatada: #{data_formatada}"
 Este README contém informações detalhadas sobre a classe `Time` em Ruby. Explore as seções acima para aprender mais sobre cada recurso e veja os exemplos práticos para entender como implementar o uso de tempos em seus projetos.
 
 ## 🤝 Contribuições
+
+Contribuições são bem-vindas! Se você tem sugestões de melhorias ou novos exemplos, sinta-se à vontade para abrir uma pull request.
