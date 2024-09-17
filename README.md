@@ -75,10 +75,28 @@ Este repositório contém exemplos práticos e conceitos fundamentais para quem 
 <details>
 <summary>⚙️ 7 - Ruby Avançado</summary>
 
-- 🧠 Métodos Dinâmicos
-- 🧬 Metaprogramação
-- 🗃️ Manipulação de Arquivos
+- 🧠 **Métodos Dinâmicos**
+  - `method_missing`
+  - `self`
+  - `lambda`
+  - `times`
 
+- 🔄 **Blocos de Código**
+  - `block`
+
+- 🧩 **Módulos**
+  - `modules`
+
+- 🔍 **Expressões Regulares (Regex)**
+  - `regex`
+
+- ⏲️ **Método `times`**
+  - `times`
+
+- 📂 **Manipulação de Arquivos**
+  - Leitura e escrita de arquivos
+  - Manipulação de caminhos
+  - Arquivos binários e texto
 </details>
 
 ## 🛠️ Como usar este repositório
