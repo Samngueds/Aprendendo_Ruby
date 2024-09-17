@@ -68,7 +68,6 @@ Este repositório contém exemplos práticos e conceitos fundamentais para quem 
 - 🧬 Herança
 - 🧩 Polimorfismo
 - 🕵️ Escopo de Variáveis
-- 🛡️ Modificadores de Acesso
 
 </details>
 
