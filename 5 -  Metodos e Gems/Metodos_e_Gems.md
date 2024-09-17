@@ -124,7 +124,6 @@ Para verificar a versão de uma gem instalada, use:
 ```sh
 gem list [nome_da_gem]
 ```
-```
 
 </details>
 
