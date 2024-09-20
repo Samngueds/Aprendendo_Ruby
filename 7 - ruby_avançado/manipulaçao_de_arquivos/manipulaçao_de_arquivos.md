@@ -1,23 +1,27 @@
-<img align="margin-right: 100px;" src="https://static.wikia.nocookie.net/tibia/images/a/a9/Giant_Ruby.gif/revision/latest?cb=20181107134532&path-prefix=en&format=original" width="60" height="60">[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Oswald&weight=500&size=30&pause=1000&color=C00F0F&center=true&vCenter=true&width=435&lines=Leitura+de+Arquivos+em+Ruby)](https://git.io/typing-svg)<img align="margin-left: 100px;" src="https://static.wikia.nocookie.net/tibia/images/a/a9/Giant_Ruby.gif/revision/latest?cb=20181107134532&path-prefix=en&format=original" width="60" height="60">
+<img align="margin-right: 100px;" src="https://static.wikia.nocookie.net/tibia/images/a/a9/Giant_Ruby.gif/revision/latest?cb=20181107134532&path-prefix=en&format=original" width="60" height="60">[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Oswald&weight=500&size=30&pause=1000&color=C00F0F&center=true&vCenter=true&width=435&lines=Manipulação+de+Arquivos+em+Ruby)](https://git.io/typing-svg)<img align="margin-left: 100px;" src="https://static.wikia.nocookie.net/tibia/images/a/a9/Giant_Ruby.gif/revision/latest?cb=20181107134532&path-prefix=en&format=original" width="60" height="60">
 
-<h2>📂 Leitura de Arquivos em Ruby</h2>
+<h2>📂 Manipulação de Arquivos em Ruby</h2>
 
-Em Ruby, a leitura de arquivos é uma tarefa fundamental para manipulação de dados. Abaixo estão os principais métodos e técnicas para ler arquivos, desde a abertura e leitura básica até a manipulação de arquivos binários.
+Em Ruby, a manipulação de arquivos é essencial para lidar com dados. Abaixo, você encontrará métodos e exemplos práticos para abrir, ler, escrever, manipular binários, e trabalhar com streams de arquivo.
 
 ---
 
-### 📝 Abrindo Arquivos
+### 📝 Abrindo e Fechando Arquivos
 
-Para abrir um arquivo, você pode usar o método `File.open`. É possível abrir arquivos em diferentes modos, como leitura (`"r"`), escrita (`"w"`), e adição (`"a"`).
+Para abrir um arquivo, usamos `File.open`. Há diferentes modos de abertura, como leitura, escrita ou anexação.
 
 <details>
 <summary>🔍 Exemplo de abertura de arquivo</summary>
 
 ```ruby
-# Abre um arquivo para leitura
+# Abrir um arquivo para leitura
+file = File.open('example.txt', 'r')
+puts file.read
+file.close
+
+# Abrir usando blocos (fechar automático)
 File.open('example.txt', 'r') do |file|
-  content = file.read
-  puts content
+  puts file.read
 end
 ```
 
@@ -27,28 +31,25 @@ end
 
 ### 📖 Leitura de Arquivos Texto
 
-Após abrir um arquivo em modo leitura, você pode utilizar métodos para ler o conteúdo. Os métodos mais comuns são `read`, `readline`, e `readlines`.
+Após abrir um arquivo, use `read`, `readline` ou `readlines` para ler o conteúdo.
 
 <details>
-<summary>🔍 Exemplo de leitura de arquivo texto</summary>
+<summary>🔍 Exemplo de leitura de arquivo</summary>
 
 ```ruby
-# Lê o conteúdo completo do arquivo
+# Lê o arquivo inteiro
 File.open('example.txt', 'r') do |file|
-  content = file.read
-  puts content
+  puts file.read
 end
 
-# Lê uma linha do arquivo
-File.open('example.txt', 'r') do |file|
-  line = file.readline
+# Lê linha por linha
+File.foreach('example.txt') do |line|
   puts line
 end
 
-# Lê todas as linhas do arquivo em um array
+# Lê várias linhas
 File.open('example.txt', 'r') do |file|
-  lines = file.readlines
-  puts lines
+  puts file.readlines
 end
 ```
 
@@ -56,41 +57,65 @@ end
 
 ---
 
-### 🗂️ Manipulação de Caminhos
+### 🖊️ Escrita e Anexação de Arquivos
 
-Você pode manipular caminhos de arquivos usando a biblioteca `File`. Isso inclui a obtenção do caminho absoluto, verificação da existência de um arquivo e mais.
+Ruby facilita a escrita e adição de conteúdo em arquivos.
+
+<details>
+<summary>🔍 Exemplo de escrita e anexação</summary>
+
+```ruby
+# Sobrescreve o arquivo
+File.open('example.txt', 'w') do |file|
+  file.puts "Novo conteúdo"
+end
+
+# Adiciona ao final do arquivo
+File.open('example.txt', 'a') do |file|
+  file.puts "Conteúdo adicionado"
+end
+```
+
+</details>
+
+---
+
+### 🗂️ Manipulação de Caminhos e Arquivos
+
+Para trabalhar com caminhos de arquivo, Ruby oferece vários métodos úteis.
 
 <details>
 <summary>🔍 Exemplo de manipulação de caminhos</summary>
 
 ```ruby
-# Obtém o caminho absoluto de um arquivo
-puts File.absolute_path('example.txt')
-
-# Verifica se o arquivo existe
+# Verificar se o arquivo existe
 if File.exist?('example.txt')
-  puts "O arquivo existe."
-else
-  puts "O arquivo não existe."
+  puts "O arquivo existe"
 end
+
+# Renomear o arquivo
+File.rename('old_name.txt', 'new_name.txt')
+
+# Deletar o arquivo
+File.delete('example.txt') if File.exist?('example.txt')
 ```
 
 </details>
 
 ---
 
-### 🗃️ Leitura de Arquivos Binários
+### 🗃️ Leitura e Escrita de Arquivos Binários
 
-Para ler arquivos binários, você pode abrir o arquivo em modo binário (`"rb"`) e ler seu conteúdo.
+Para manipular arquivos binários, abra no modo binário.
 
 <details>
-<summary>🔍 Exemplo de leitura de arquivo binário</summary>
+<summary>🔍 Exemplo de leitura binária</summary>
 
 ```ruby
-# Abre um arquivo binário para leitura
+# Abrir arquivo binário
 File.open('example.bin', 'rb') do |file|
   content = file.read
-  puts content.unpack('H*').first  # Converte para uma representação hexadecimal
+  puts content.unpack('H*')
 end
 ```
 
@@ -98,15 +123,15 @@ end
 
 ---
 
-### 🔧 Trabalhando com Streams de Arquivo
+### 🔧 Streams e Arquivos Grandes
 
-Ruby permite trabalhar com streams de arquivo, o que é útil para ler arquivos grandes sem carregar tudo na memória de uma vez.
+Quando você precisa processar grandes arquivos, o uso de streams pode ser eficiente.
 
 <details>
-<summary>🔍 Exemplo de leitura de grandes arquivos</summary>
+<summary>🔍 Exemplo de streams</summary>
 
 ```ruby
-# Lê um arquivo grande linha por linha
+# Processar um arquivo grande linha por linha
 File.foreach('large_file.txt') do |line|
   puts line
 end
@@ -116,10 +141,64 @@ end
 
 ---
 
+### 📊 Informações e Metadados de Arquivos
+
+Você pode acessar várias informações sobre um arquivo, como o tamanho e a data de modificação.
+
+<details>
+<summary>🔍 Exemplo de metadados de arquivo</summary>
+
+```ruby
+# Tamanho do arquivo
+puts File.size('example.txt')
+
+# Última modificação
+puts File.mtime('example.txt')
+```
+
+</details>
+
+---
+
+### 🛠️ Uso de `FileUtils` para Operações Avançadas
+
+A biblioteca `FileUtils` permite realizar cópias, mover arquivos, e outras operações avançadas.
+
+<details>
+<summary>🔍 Exemplo de uso de `FileUtils`</summary>
+
+```ruby
+require 'fileutils'
+
+# Copiar um arquivo
+FileUtils.cp('source.txt', 'destination.txt')
+
+# Mover um arquivo
+FileUtils.mv('file.txt', 'new_directory/file.txt')
+```
+
+</details>
+
+---
+
+### 🔐 Permissões de Arquivo
+
+Você pode alterar as permissões de um arquivo com `chmod`.
+
+<details>
+<summary>🔍 Exemplo de alteração de permissões</summary>
+
+```ruby
+# Alterar as permissões de leitura/escrita
+File.chmod(0644, 'example.txt')
+```
+
+</details>
+
+---
+
 ## 🛠️ Como usar este repositório
 
-Este README contém informações detalhadas sobre como ler arquivos em Ruby. Explore as seções acima para aprender sobre diferentes métodos e técnicas de leitura de arquivos. Experimente os exemplos para se familiarizar com a manipulação de arquivos em seus projetos Ruby.
+Este README contém exemplos detalhados para manipulação de arquivos em Ruby. Explore as seções para aprender como usar diferentes técnicas de leitura, escrita e manipulação de arquivos em seus projetos.
 
 ## 🤝 Contribuições
-
-Contribuições são bem-vindas! Se você tem sugestões de melhorias ou novos exemplos, sinta-se à vontade para abrir uma *pull request*.
